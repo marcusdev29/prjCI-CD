@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Aluno</title>
+  <link rel="stylesheet" href="/styles/global.css">
+  <link rel="stylesheet" href="/styles/reset.css">
+  <style>
+    html {
+      list-style-type: none;
+    }
+    body {
+      background-color: rgb(128, 128, 136);  
+      font-family: "Signika", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #9aa3a8;  
+      background-image: url("{{ url_for('static', filename='img/satoro.png') }}");   
+      background-size: 100%;
+      background-repeat: no-repeat; 
+      background-position: center; 
+      background-attachment: fixed; 
+    }
+    h1, p {
+      text-align: center;
+      color: white;
+      margin-top: 0;
+    }
+    .containerPrincipal {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    } 
+    .back {
+      padding-top: 20px;
+    }
+    a:hover {
+      color: rgb(232, 150, 50);
+    }
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+    .containerGeral {
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 40px;
+      margin: 40px;
+      align-items: center;
+      padding: 20px;
+    }
+    .voltar {
+      display: flex;
+      justify-content: end;
+    }
+    .formContainer {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      gap: 20px;
+    }
+    label {
+      margin: 0;
+      padding: 0;
+    }
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red; /* Cor da mensagem de erro */
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="containerGeral">
+    <h1>Adicionar Aluno</h1>
+
+    <!-- Bloco JavaScript para exibir o alerta se houver uma mensagem de erro -->
+    {% if error_message %}
+      <script>
+        alert("{{ error_message }}");
+      </script>
+    {% endif %}
+
+    <div class="containerPrincipal">
+      <form class="formContainer" action="{{ url_for('alunos.create_aluno') }}" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required>
+
+        <label for="data_nascimento">Data de Nascimento:</label>
+        <input type="date" id="data_nascimento" name="data_nascimento" required>
+
+        <label for="nota_primeiro_semestre">Nota do Primeiro Semestre:</label>
+        <input type="number" id="nota_primeiro_semestre" name="nota_primeiro_semestre" step="0.01" max="10" required>
+
+        <label for="nota_segundo_semestre">Nota do Segundo Semestre:</label>
+        <input type="number" id="nota_segundo_semestre" name="nota_segundo_semestre" step="0.01" max="10" required>
+
+        <label for="turma_id">ID da Turma:</label>
+        <input type="number" id="turma_id" name="turma_id" required>
+
+        <button type="submit">Adicionar Aluno</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="voltar">
+    <a class="back" href="{{ url_for('alunos.get_alunos') }}">Voltar para a lista de alunos</a>
+  </div>
+</body>
+</html>

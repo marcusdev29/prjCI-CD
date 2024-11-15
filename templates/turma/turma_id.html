@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="/styles/reset.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes da Turma</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap');
+
+    body {
+      background-color: rgb(128, 128, 136);
+      font-family: "Signika", sans-serif;
+      background-color: #9aa3a8;  
+      background-image: url("{{ url_for('static', filename='img/satoro.png') }}");   
+      background-size: 100%;
+      background-repeat: no-repeat; 
+      background-position: center; 
+      background-attachment: fixed; 
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    .detalhes {
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 5px;
+      width: 80%;
+      display: inline-block;
+      text-align: left;
+    }
+
+    a {
+      text-decoration: none;
+      color: rgb(7, 76, 126);
+      margin: 10px 0;
+      display: inline-block;
+    }
+
+    a:hover {
+      color: rgb(142, 202, 202);
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: rgb(49, 94, 176);
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: rgb(142, 202, 202);
+    }
+  </style>
+</head>
+<body>
+  <h1>Detalhes da Turma</h1>
+  <div class="detalhes">
+    <p><strong>Descrição:</strong> {{ turma.descricao }}</p>
+    <p><strong>ID:</strong> {{ turma.id }}</p>
+    <p><strong>Professor ID:</strong> {{ turma.professor_id }}</p>
+    <p><strong>Status:</strong> {{ 'Ativa' if turma.ativo else 'Inativa' }}</p>
+    <a href="{{ url_for('turma.editar_turma_page', id_turma=turma.id) }}">Editar</a>
+    <form action="{{ url_for('turma.delete_turma', id_turma=turma.id) }}" method="POST" style="display:inline;">
+      <button type="submit">Deletar</button>
+    </form>
+    <br>
+    <a href="{{ url_for('turma.get_turmas') }}">Voltar à lista de turmas</a>
+  </div>
+</body>
+</html>

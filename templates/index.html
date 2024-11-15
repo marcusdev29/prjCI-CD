@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0px;
+            background-color: #9aa3a8;  
+            background-image: url("{{ url_for('static', filename='img/satoro.png') }}");
+            /* Caminho para a sua imagem */
+            background-size: 100%; /* Ajusta a imagem para cobrir todo o background */
+            background-repeat: no-repeat; /* Não repete a imagem */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; 
+        }
+        h3, h1, p {
+            color: white;
+            font-weight: 800;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        h3 {
+            color: #fdf919;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #494a4b;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        .infos {
+            display: flex;
+            flex-direction: column;
+        }
+        li {
+            list-style-type: none;
+        }
+        .leftContainer {
+            display: flex;
+            
+        
+        }
+        .rightContainer {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        .containerGeral {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-top: 80px;
+            padding-left: 5px;
+            padding-right: 5px;
+            gap: 120px;
+            justify-content: center;
+        }
+        .header{
+            display: flex;
+            justify-content: center;
+            background-color: rgba(128, 128, 128, 0.5); /* 50% de opacidade */
+
+        }
+        .footer {
+            background-color: rgba(128, 128, 128, 0.5); /* 50% de opacidade */
+            display: flex;
+            justify-content: center;           
+        }
+        .content {
+            display: flex;
+            margin-left: 350px;
+            margin-bottom: 200;
+            flex-direction: column;
+        }
+        p {
+            font-size: 15px;
+        }
+        #colorY {
+            color: #ce9f05;
+        }
+    </style>
+</head>
+<body>
+    <div class="containerGeral">
+    <div class="leftContainer">
+    <div class="infos">
+       <h1 id="colorY">Como efetuar o fluxo</h1>
+       <p>1- Crie primeiro o professor </p>
+       <li><a href="http://127.0.0.1:8000/professores" target="_blank">Professores</a></li>
+       <p>2- Crie a turma e coloca o ID do professor correspondente<li><a href="http://127.0.0.1:8000/turmas" target="_blank">Turmas</a></li>
+       <p>3- Crie o aluno e coloque o ID da turma correspondente  <li><a href="http://127.0.0.1:8000/alunos" target="_blank">Alunos</a></li>
+        <br></p>
+    </div>
+    </div>
+    <div class="rightContainer">      
+    <div class="content"> 
+       <h1>Atenção</h1>
+       <p>Na hora da criação do aluno Se o ID da turma estiver inválido
+        irá ocorrer uma exceção. Se a turma estiver com o status inativo, irá correr uma exceção.</p>
+    </div>
+    </div>
+</div>
+</body>
+</html>
